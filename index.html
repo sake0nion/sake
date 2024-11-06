@@ -100,5 +100,26 @@
     <footer>
         <p>&copy; 2024 SAKE. Все права защищены.</p>
     </footer>
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
+
+    const formData = new FormData(event.target);
+
+    fetch("send_email.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Показываем сообщение в виде всплывающего окна
+    })
+    .catch(error => {
+        alert("Ошибка при отправке сообщения.");
+        console.error("Error:", error);
+    });
+});
+</script>
+
 </body>
 </html>
