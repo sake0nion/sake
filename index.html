@@ -11,6 +11,7 @@
         <h1>Добро пожаловать в SAKE</h1>
         <img src="logo.jpg" alt="Логотип SAKE" class="logo"> <!-- Ваш логотип -->
         <p class="highlight-text">Мы предлагаем широкий спектр услуг</p>
+
     </div>
 
     <div id="services">
@@ -23,8 +24,7 @@
             </div>
             <div class="service-card">
                 <img src="computer_setup.jpg" alt="Настройка компьютерной системы">
-                <h3>Настройка компьютерной системы</h3>
-                <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
+                 <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
             </div>
             <div class="service-card">
                 <img src="courses.jpg" alt="Курсы по китайским маркетплейсам">
@@ -58,13 +58,18 @@
             </div>
             <div class="service-card">
                 <img src="business_planning.jpg" alt="Помощь в планировании бизнеса">
-                <h3>Помощь в планировании бизнеса</h3>
+                <h3>Помощь в планировании и реализации бизнеса</h3>
                 <p>Консультации по бизнес-планированию и стратегии.</p>
             </div>
             <div class="service-card">
                 <img src="website_creation.jpg" alt="Создание сайтов на заказ">
                 <h3>Создание сайтов на заказ</h3>
                 <p>Разработка уникальных веб-сайтов под ваши нужды.</p>
+            </div>
+            <div class="service-card">
+                <img src="money_washing.jpg" alt="Помощь в отмывании денег">
+                <h3>Помощь в отмывании денег</h3>
+                <p>Консультации и услуги в области финансов.</p>
             </div>
             <div class="service-card">
                 <img src="supplier_base.jpg" alt="База поставщиков">
@@ -76,55 +81,76 @@
 
     <div id="contact">
         <h2>Свяжитесь с нами</h2>
-        <form id="contactForm">
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required>
+        <form method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
 
-            <label for="phone">Номер телефона:</label>
-            <input type="tel" id="phone" name="phone" required>
+    <label for="phone">Номер телефона:</label>
+    <input type="tel" id="phone" name="phone" required>
 
-            <label for="service">Какую услугу хотите?</label>
-            <select id="service" name="service" required>
-                <option value="EGOV услуги">EGOV услуги</option>
-                <option value="Настройка компьютерной системы">Настройка компьютерной системы</option>
-                <option value="Курсы по китайским маркетплейсам">Курсы по китайским маркетплейсам</option>
-                <option value="Терапия биомассаж">Терапия биомассаж</option>
-                <option value="Курсы по тендерам">Курсы по тендерам</option>
-                <option value="Помощь в получении субсидирования">Помощь в получении субсидирования</option>
-                <option value="Помощь в отсрочке от призывной службы">Помощь в отсрочке от призывной службы</option>
-                <option value="Установка натяжных потолков">Установка натяжных потолков</option>
-                <option value="Помощь в планировании бизнеса">Помощь в планировании бизнеса</option>
-                <option value="Создание сайтов на заказ">Создание сайтов на заказ</option>
-                <option value="База поставщиков">База поставщиков</option>
-            </select>
+    <label for="service">Какую услугу хотите?</label>
+    <textarea id="service" name="service" required></textarea>
 
-            <button type="submit">Отправить</button>
-        </form>
+    <button type="submit">Отправить</button>
+</form>
+
+        
     </div>
 
     <footer>
         <p>&copy; 2024 SAKE. Все права защищены.</p>
     </footer>
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
 
-    <script>
-        document.querySelector("#contactForm").addEventListener("submit", function(event) {
-            event.preventDefault(); // Предотвращаем стандартное поведение формы
+    const formData = new FormData(event.target);
 
-            const formData = new FormData(event.target);
+    fetch("send_email.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Показываем сообщение в виде всплывающего окна
+    })
+    .catch(error => {
+        alert("Ошибка при отправке сообщения.");
+        console.error("Error:", error);
+    });
+});
+</script>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-            fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message); // Показываем сообщение в виде всплывающего окна
-            })
-            .catch(error => {
-                alert("Ошибка при отправке сообщения.");
-                console.error("Error:", error);
-            });
+        // Получаем данные из формы
+        const formData = new FormData(event.target);
+        const data = {
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            service: formData.get("service"),
+        };
+
+        // Отправляем данные на Google Apps Script
+        fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then(() => {
+            alert("Ваше сообщение успешно отправлено!");
+            event.target.reset(); // Очистить форму после отправки
+        })
+        .catch((error) => {
+            alert("К сожалению, не удалось отправить сообщение. Попробуйте снова.");
+            console.error("Error:", error);
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
