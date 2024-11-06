@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers = "From: dobryananas19@gmail.com"; // Замените на нужный адрес
 
     if (mail($to, $subject, $message, $headers)) {
-        echo "Ваше сообщение отправлено!";
+        echo json_encode(["status" => "success", "message" => "Ваше сообщение отправлено!"]);
     } else {
-        echo "Ошибка при отправке сообщения.";
+        echo json_encode(["status" => "error", "message" => "Ошибка при отправке сообщения."]);
     }
 }
 ?>
