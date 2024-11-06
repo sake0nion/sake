@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAKE</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="hero">
+        <h1>Добро пожаловать в SAKE</h1>
+        <img src="logo.jpg" alt="Логотип SAKE" class="logo"> <!-- Ваш логотип -->
+        <p class="highlight-text">Мы предлагаем широкий спектр услуг</p>
+
+    </div>
+
+    <div id="services">
+        <h2>Наши услуги</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="egov.jpg" alt="EGOV услуги">
+                <h3>EGOV услуги</h3>
+                <p>Консультации и помощь с государственными электронными услугами и документами.</p>
+            </div>
+            <div class="service-card">
+                <img src="computer_setup.jpg" alt="Настройка компьютерной системы">
+                 <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
+            </div>
+            <div class="service-card">
+                <img src="courses.jpg" alt="Курсы по китайским маркетплейсам">
+                <h3>Курсы по китайским маркетплейсам</h3>
+                <p>Обучение для успешной торговли на WeChat, Pinduoduo, Taobao и других.</p>
+            </div>
+            <div class="service-card">
+                <img src="biomassage.jpg" alt="Терапия биомассаж">
+                <h3>Терапия биомассаж</h3>
+                <p>Восстановление и оздоровление с помощью биомассажа.</p>
+            </div>
+            <div class="service-card">
+                <img src="tenders.jpg" alt="Курсы по тендерам">
+                <h3>Курсы по тендерам</h3>
+                <p>Обучение по участию в тендерах и конкурсах.</p>
+            </div>
+            <div class="service-card">
+                <img src="subsidies.jpg" alt="Помощь в получении субсидирования">
+                <h3>Помощь в получении субсидирования</h3>
+                <p>Консультации по получению государственных субсидий.</p>
+            </div>
+            <div class="service-card">
+                <img src="military_service.jpg" alt="Помощь в отсрочке от призывной службы">
+                <h3>Помощь в отсрочке от призывной службы</h3>
+                <p>Консультации и помощь в вопросах призыва.</p>
+            </div>
+            <div class="service-card">
+                <img src="ceiling_installation.jpg" alt="Установка натяжных потолков">
+                <h3>Установка натяжных потолков</h3>
+                <p>Профессиональная установка натяжных потолков.</p>
+            </div>
+            <div class="service-card">
+                <img src="business_planning.jpg" alt="Помощь в планировании бизнеса">
+                <h3>Помощь в планировании и реализации бизнеса</h3>
+                <p>Консультации по бизнес-планированию и стратегии.</p>
+            </div>
+            <div class="service-card">
+                <img src="website_creation.jpg" alt="Создание сайтов на заказ">
+                <h3>Создание сайтов на заказ</h3>
+                <p>Разработка уникальных веб-сайтов под ваши нужды.</p>
+            </div>
+            <div class="service-card">
+                <img src="money_washing.jpg" alt="Помощь в отмывании денег">
+                <h3>Помощь в отмывании денег</h3>
+                <p>Консультации и услуги в области финансов.</p>
+            </div>
+            <div class="service-card">
+                <img src="supplier_base.jpg" alt="База поставщиков">
+                <h3>База поставщиков</h3>
+                <p>Доступ к базе надежных поставщиков.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contact">
+        <h2>Свяжитесь с нами</h2>
+        <form action="send_email.php" method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="phone">Номер телефона:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="service">Какую услугу хотите?</label>
+    <textarea id="service" name="service" required></textarea>
+
+    <button type="submit">Отправить</button>
+</form>
+
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SAKE. Все права защищены.</p>
+    </footer>
+</body>
+</html>
