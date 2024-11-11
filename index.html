@@ -9,9 +9,8 @@
 <body>
     <div id="hero">
         <h1>Добро пожаловать в SAKE</h1>
-        <img src="logo.jpg" alt="Логотип SAKE" class="logo"> <!-- Ваш логотип -->
+        <img src="logo.jpg" alt="Логотип SAKE" class="logo">
         <p class="highlight-text">Мы предлагаем широкий спектр услуг</p>
-
     </div>
 
     <div id="services">
@@ -24,7 +23,8 @@
             </div>
             <div class="service-card">
                 <img src="computer_setup.jpg" alt="Настройка компьютерной системы">
-                 <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
+                <h3>Настройка компьютерной системы</h3>
+                <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
             </div>
             <div class="service-card">
                 <img src="courses.jpg" alt="Курсы по китайским маркетплейсам">
@@ -67,90 +67,36 @@
                 <p>Разработка уникальных веб-сайтов под ваши нужды.</p>
             </div>
             <div class="service-card">
-                <img src="money_washing.jpg" alt="Помощь в отмывании денег">
-                <h3>Помощь в отмывании денег</h3>
-                <p>Консультации и услуги в области финансов.</p>
+                <img src="paragliding.jpg" alt="Парапланы Полетаем">
+                <h3>Парапланы Полетаем</h3>
+                <p>Услуги полетов на параплане для экстремалов.</p>
             </div>
             <div class="service-card">
-                <img src="supplier_base.jpg" alt="База поставщиков">
-                <h3>База поставщиков</h3>
-                <p>Доступ к базе надежных поставщиков.</p>
+                <img src="kaspi_training.jpg" alt="Kaspi.kz Магазин Обучения">
+                <h3>Kaspi.kz Магазин Обучения</h3>
+                <p>Обучение по торговле на Kaspi.kz и освоение онлайн-продаж.</p>
             </div>
         </div>
     </div>
 
     <div id="contact">
         <h2>Свяжитесь с нами</h2>
-        <form method="post">
-    <label for="name">Имя:</label>
-    <input type="text" id="name" name="name" required>
+        <form id="contact-form">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
 
-    <label for="phone">Номер телефона:</label>
-    <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Номер телефона:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-    <label for="service">Какую услугу хотите?</label>
-    <textarea id="service" name="service" required></textarea>
+            <label for="service">Какую услугу хотите?</label>
+            <textarea id="service" name="service" required></textarea>
 
-    <button type="submit">Отправить</button>
-</form>
-
-        
+            <button type="submit">Отправить</button>
+        </form>
     </div>
 
     <footer>
         <p>&copy; 2024 SAKE. Все права защищены.</p>
     </footer>
-<script>
-document.querySelector("form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Предотвращаем стандартное поведение формы
-
-    const formData = new FormData(event.target);
-
-    fetch("send_email.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.message); // Показываем сообщение в виде всплывающего окна
-    })
-    .catch(error => {
-        alert("Ошибка при отправке сообщения.");
-        console.error("Error:", error);
-    });
-});
-</script>
-<script>
-    document.querySelector("form").addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        // Получаем данные из формы
-        const formData = new FormData(event.target);
-        const data = {
-            name: formData.get("name"),
-            phone: formData.get("phone"),
-            service: formData.get("service"),
-        };
-
-        // Отправляем данные на Google Apps Script
-        fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
-            method: "POST",
-            mode: "no-cors",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
-        .then(() => {
-            alert("Ваше сообщение успешно отправлено!");
-            event.target.reset(); // Очистить форму после отправки
-        })
-        .catch((error) => {
-            alert("К сожалению, не удалось отправить сообщение. Попробуйте снова.");
-            console.error("Error:", error);
-        });
-    });
-</script>
-
 </body>
 </html>
