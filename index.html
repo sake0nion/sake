@@ -11,53 +11,24 @@
         <h1>Добро пожаловать в SAKE</h1>
         <img src="logo.jpg" alt="Логотип SAKE" class="logo"> <!-- Ваш логотип -->
         <p class="highlight-text">Мы предлагаем широкий спектр услуг</p>
-
     </div>
 
     <div id="services">
-        <h2>Наши услуги</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="egov.jpg" alt="EGOV услуги">
-                <h3>EGOV услуги</h3>
-                <p>Консультации и помощь с государственными электронными услугами и документами.</p>
+@@ -23,8 +24,7 @@
             </div>
             <div class="service-card">
                 <img src="computer_setup.jpg" alt="Настройка компьютерной системы">
+                <h3>Настройка компьютерной системы</h3>
+                <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
                  <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
             </div>
             <div class="service-card">
                 <img src="courses.jpg" alt="Курсы по китайским маркетплейсам">
-                <h3>Курсы по китайским маркетплейсам</h3>
-                <p>Обучение для успешной торговли на WeChat, Pinduoduo, Taobao и других.</p>
-            </div>
-            <div class="service-card">
-                <img src="biomassage.jpg" alt="Терапия биомассаж">
-                <h3>Терапия биомассаж</h3>
-                <p>Восстановление и оздоровление с помощью биомассажа.</p>
-            </div>
-            <div class="service-card">
-                <img src="tenders.jpg" alt="Курсы по тендерам">
-                <h3>Курсы по тендерам</h3>
-                <p>Обучение по участию в тендерах и конкурсах.</p>
-            </div>
-            <div class="service-card">
-                <img src="subsidies.jpg" alt="Помощь в получении субсидирования">
-                <h3>Помощь в получении субсидирования</h3>
-                <p>Консультации по получению государственных субсидий.</p>
-            </div>
-            <div class="service-card">
-                <img src="military_service.jpg" alt="Помощь в отсрочке от призывной службы">
-                <h3>Помощь в отсрочке от призывной службы</h3>
-                <p>Консультации и помощь в вопросах призыва.</p>
-            </div>
-            <div class="service-card">
-                <img src="ceiling_installation.jpg" alt="Установка натяжных потолков">
-                <h3>Установка натяжных потолков</h3>
-                <p>Профессиональная установка натяжных потолков.</p>
+@@ -58,14 +58,19 @@
             </div>
             <div class="service-card">
                 <img src="business_planning.jpg" alt="Помощь в планировании бизнеса">
+                <h3>Помощь в планировании бизнеса</h3>
                 <h3>Помощь в планировании и реализации бизнеса</h3>
                 <p>Консультации по бизнес-планированию и стратегии.</p>
             </div>
@@ -74,26 +45,43 @@
             <div class="service-card">
                 <img src="supplier_base.jpg" alt="База поставщиков">
                 <h3>База поставщиков</h3>
-                <p>Доступ к базе надежных поставщиков.</p>
-            </div>
-        </div>
-    </div>
+@@ -76,55 +81,76 @@
 
     <div id="contact">
         <h2>Свяжитесь с нами</h2>
+        <form id="contactForm">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
         <form method="post">
     <label for="name">Имя:</label>
     <input type="text" id="name" name="name" required>
 
+            <label for="phone">Номер телефона:</label>
+            <input type="tel" id="phone" name="phone" required>
     <label for="phone">Номер телефона:</label>
     <input type="tel" id="phone" name="phone" required>
 
+            <label for="service">Какую услугу хотите?</label>
+            <select id="service" name="service" required>
+                <option value="EGOV услуги">EGOV услуги</option>
+                <option value="Настройка компьютерной системы">Настройка компьютерной системы</option>
+                <option value="Курсы по китайским маркетплейсам">Курсы по китайским маркетплейсам</option>
+                <option value="Терапия биомассаж">Терапия биомассаж</option>
+                <option value="Курсы по тендерам">Курсы по тендерам</option>
+                <option value="Помощь в получении субсидирования">Помощь в получении субсидирования</option>
+                <option value="Помощь в отсрочке от призывной службы">Помощь в отсрочке от призывной службы</option>
+                <option value="Установка натяжных потолков">Установка натяжных потолков</option>
+                <option value="Помощь в планировании бизнеса">Помощь в планировании бизнеса</option>
+                <option value="Создание сайтов на заказ">Создание сайтов на заказ</option>
+                <option value="База поставщиков">База поставщиков</option>
+            </select>
     <label for="service">Какую услугу хотите?</label>
     <textarea id="service" name="service" required></textarea>
 
+            <button type="submit">Отправить</button>
+        </form>
     <button type="submit">Отправить</button>
 </form>
-
         
     </div>
 
@@ -103,9 +91,11 @@
 <script>
 document.querySelector("form").addEventListener("submit", function(event) {
     event.preventDefault(); // Предотвращаем стандартное поведение формы
-
     const formData = new FormData(event.target);
 
+    <script>
+        document.querySelector("#contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Предотвращаем стандартное поведение формы
     fetch("send_email.php", {
         method: "POST",
         body: formData
@@ -124,6 +114,7 @@ document.querySelector("form").addEventListener("submit", function(event) {
     document.querySelector("form").addEventListener("submit", function(event) {
         event.preventDefault();
 
+            const formData = new FormData(event.target);
         // Получаем данные из формы
         const formData = new FormData(event.target);
         const data = {
@@ -132,6 +123,18 @@ document.querySelector("form").addEventListener("submit", function(event) {
             service: formData.get("service"),
         };
 
+            fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message); // Показываем сообщение в виде всплывающего окна
+            })
+            .catch(error => {
+                alert("Ошибка при отправке сообщения.");
+                console.error("Error:", error);
+            });
         // Отправляем данные на Google Apps Script
         fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
             method: "POST",
@@ -149,8 +152,8 @@ document.querySelector("form").addEventListener("submit", function(event) {
             alert("К сожалению, не удалось отправить сообщение. Попробуйте снова.");
             console.error("Error:", error);
         });
+    </script>
     });
 </script>
-
 </body>
 </html>
