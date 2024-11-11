@@ -126,20 +126,16 @@ footer {
     h1, h2, h3 {
         font-size: 1.5em;
     }
-
     #hero h1 {
         font-size: 2em;
     }
-
     .services-grid {
         grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
     }
-
     .logo {
         width: 100px; /* Меньше логотип на мобильных */
         height: 100px;
     }
-
     input, textarea, button {
         width: 100%; /* Растягиваем элементы формы на всю ширину */
     }
