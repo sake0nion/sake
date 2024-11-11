@@ -121,26 +121,3 @@ footer {
     background-color: rgba(51, 51, 51, 0.8); /* Темный фон для подвала с прозрачностью */
     color: white; /* Белый текст */
 }
-/* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
-    h1, h2, h3 {
-        font-size: 1.5em;
-    }
-
-    #hero h1 {
-        font-size: 2em;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
-    }
-
-    .logo {
-        width: 100px; /* Меньше логотип на мобильных */
-        height: 100px;
-    }
-
-    input, textarea, button {
-        width: 100%; /* Растягиваем элементы формы на всю ширину */
-    }
-}
