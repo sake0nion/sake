@@ -5,22 +5,47 @@
 }
 
 body {
-    background-image: url('фон для сайта.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: gold;
+    background-image: url('фон для сайтсаке.jpg'); /* Путь к картинке */
+    background-size: cover; /* Масштабирование на весь экран */
+    background-position: center; /* Центрирование */
+    background-repeat: no-repeat; /* Отключение повторения */
+    background-attachment: fixed; /* Закрепление фона при прокрутке */
+    color: gold; /* Золотой цвет текста */
     font-family: 'Arial', sans-serif;
 }
 
 h1, h2, h3 {
-    text-align: center;
+    text-align: center; /* Центрирование заголовков */
     margin: 20px 0;
 }
 
 #hero {
     padding: 50px 20px;
+}
+
+#hero h1 {
+    font-size: 2.5em;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+.highlight-text {
+    font-size: 1.5em; /* Увеличенный размер шрифта */
+    font-weight: bold; /* Жирный шрифт */
+    color: gold; /* Золотой цвет текста */
+    text-align: center; /* Центрирование текста */
+    margin-top: 20px; /* Отступ сверху */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Тень для выделения */
+}
+
+.logo {
+    width: 150px; /* Ширина логотипа */
+    height: 150px; /* Высота логотипа */
+    border-radius: 50%; /* Закругление углов для создания круга */
+    display: block; /* Центрирование логотипа */
+    margin: 20px auto; /* Отступ сверху и снизу, а также автоматические отступы по бокам */
 }
 
 #services {
@@ -29,62 +54,93 @@ h1, h2, h3 {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Авто-колонки для адаптивности */
+    gap: 20px; /* Отступ между карточками */
 }
 
 .service-card {
-    background-color: rgba(34, 34, 34, 0.8);
+    background-color: rgba(34, 34, 34, 0.8); /* Темный фон с прозрачностью для карточек */
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: transform 0.3s; /* Плавный эффект при наведении */
 }
 
 .service-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Увеличение карточки при наведении */
 }
 
 .service-card img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-@media (max-width: 768px) {
-    .services-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    }
-
-    h1, h2, h3 {
-        font-size: 1.5em;
-    }
-
-    .service-card img {
-        max-width: 80px;
-        height: auto;
-    }
+    max-width: 100%; /* Адаптивное изображение */
+    border-radius: 10px; /* Закругление углов изображения */
 }
 
 #contact {
     padding: 20px;
-    background-color: rgba(51, 51, 51, 0.8);
-    border-radius: 10px;
+    background-color: rgba(51, 51, 51, 0.8); /* Темный фон с прозрачностью для формы */
+    border-radius: 10px; /* Закругление углов */
     margin: 20px;
+}
+
+#contact h2 {
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+form {
+    display: flex;
+    flex-direction: column; /* Вертикальное расположение полей */
+}
+
+label {
+    margin: 10px 0 5px; /* Отступы для меток */
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 15px; /* Отступ снизу для полей ввода */
+    border-radius: 5px;
+    border: 1px solid #ccc; /* Граница для полей ввода */
 }
 
 button {
     padding: 10px;
-    background-color: gold;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: gold; /* Цвет кнопки */
+    color: black; /* Цвет текста кнопки */
+    border: none; /* Убрать границу */
+    border-radius: 5px; /* Закругление углов кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+}
+
+button:hover {
+    background-color: orange; /* Цвет кнопки при наведении */
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background-color: rgba(51, 51, 51, 0.8);
-    color: white;
+    background-color: rgba(51, 51, 51, 0.8); /* Темный фон для подвала с прозрачностью */
+    color: white; /* Белый текст */
+}
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    h1, h2, h3 {
+        font-size: 1.5em;
+    }
+
+    #hero h1 {
+        font-size: 2em;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+    }
+
+    .logo {
+        width: 100px; /* Меньше логотип на мобильных */
+        height: 100px;
+    }
+
+    input, textarea, button {
+        width: 100%; /* Растягиваем элементы формы на всю ширину */
+    }
 }
