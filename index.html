@@ -11,6 +11,7 @@
         <h1>Добро пожаловать в SAKE</h1>
         <img src="logo.jpg" alt="Логотип SAKE" class="logo"> <!-- Ваш логотип -->
         <p class="highlight-text">Мы предлагаем широкий спектр услуг</p>
+
     </div>
 
     <div id="services">
@@ -23,8 +24,7 @@
             </div>
             <div class="service-card">
                 <img src="computer_setup.jpg" alt="Настройка компьютерной системы">
-                <h3>Настройка компьютерной системы</h3>
-                <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
+                 <p>Профессиональная настройка IT-систем для вашего бизнеса.</p>
             </div>
             <div class="service-card">
                 <img src="courses.jpg" alt="Курсы по китайским маркетплейсам">
@@ -58,7 +58,7 @@
             </div>
             <div class="service-card">
                 <img src="business_planning.jpg" alt="Помощь в планировании бизнеса">
-                <h3>Помощь в планировании бизнеса</h3>
+                <h3>Помощь в планировании и реализации бизнеса</h3>
                 <p>Консультации по бизнес-планированию и стратегии.</p>
             </div>
             <div class="service-card">
@@ -76,47 +76,81 @@
                 <h3>База поставщиков</h3>
                 <p>Доступ к базе надежных поставщиков.</p>
             </div>
-            <div class="service-card">
-                <img src="paragliding.jpg" alt="Парапланы полетаем">
-                <h3>Парапланы полетаем</h3>
-                <p>Полетайте на парапланах с нашими инструкторами.</p>
-            </div>
-            <div class="service-card">
-                <img src="kaspi_training.jpg" alt="Kaspi.kz магазин обучения">
-                <h3>Kaspi.kz магазин обучения</h3>
-                <p>Обучение для работы с Kaspi.kz магазином.</p>
-            </div>
         </div>
     </div>
 
     <div id="contact">
         <h2>Свяжитесь с нами</h2>
-        <form action="https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec" method="post">
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="phone">Номер телефона:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <label for="service">Какую услугу хотите?</label>
-            <textarea id="service" name="service" required></textarea>
-            <button type="submit">Отправить</button>
-        </form>
+        <form method="post">
+    <label for="name">Имя:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="phone">Номер телефона:</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="service">Какую услугу хотите?</label>
+    <textarea id="service" name="service" required></textarea>
+
+    <button type="submit">Отправить</button>
+</form>
+
+        
     </div>
 
     <footer>
         <p>&copy; 2024 SAKE. Все права защищены.</p>
     </footer>
+<script>
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Предотвращаем стандартное поведение формы
 
-    <style>
-        /* Адаптивность для мобильных устройств */
-        @media (max-width: 768px) {
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr); /* 3 на 3 на мобильных */
-            }
-            .service-card img {
-                width: 80px; /* Уменьшенные иконки */
-                height: 80px;
-            }
-        }
-    </style>
+    const formData = new FormData(event.target);
+
+    fetch("send_email.php", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message); // Показываем сообщение в виде всплывающего окна
+    })
+    .catch(error => {
+        alert("Ошибка при отправке сообщения.");
+        console.error("Error:", error);
+    });
+});
+</script>
+<script>
+    document.querySelector("form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        // Получаем данные из формы
+        const formData = new FormData(event.target);
+        const data = {
+            name: formData.get("name"),
+            phone: formData.get("phone"),
+            service: formData.get("service"),
+        };
+
+        // Отправляем данные на Google Apps Script
+        fetch("https://script.google.com/macros/s/AKfycbwuIaoRGhf8dsZ2mwhzj4uaofdC09e9WYCu8FgAK40KVoBVSh1_0zFzJWyT6YFp5dis/exec", {
+            method: "POST",
+            mode: "no-cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then(() => {
+            alert("Ваше сообщение успешно отправлено!");
+            event.target.reset(); // Очистить форму после отправки
+        })
+        .catch((error) => {
+            alert("К сожалению, не удалось отправить сообщение. Попробуйте снова.");
+            console.error("Error:", error);
+        });
+    });
+</script>
+
 </body>
 </html>
